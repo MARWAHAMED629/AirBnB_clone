@@ -10,7 +10,6 @@ from time import sleep
 from models.base_model import BaseModel
 
 
-
 class TestBasemodel(unittest.TestCase):
     """
     Unittest for BaseModel
@@ -37,6 +36,7 @@ class TestBasemodel(unittest.TestCase):
             os.rename("tmp.json", "file.json")
         except FileNotFoundError:
             pass
+
     def test_init(self):
         """
         Test for an init.
@@ -65,15 +65,14 @@ class TestBasemodel(unittest.TestCase):
         """
         my_mdl = BaseModel()
 
-        my_mdl_dict = my_mdl.to_dict()
+        mdl_dic = my_mdl.to_dict()
 
-        self.assertIsInstance(my_mdl_dict, dict)
+        self.assertIsInstance(mdl_dic, dict)
 
-        self.assertEqual(my_mdl_dict["__class__"], 'BaseModel')
-        self.assertEqual(my_mdl_dict['id'], my_mdl.id)
-        self.assertEqual(my_mdl_dict['created_at'], my_mdl.created_at.isoformat())
-        self.assertEqual(my_mdl_dict["updated_at"], my_mdl.updated_at.isoformat())
-
+        self.assertEqual(mdl_dic["__class__"], 'BaseModel')
+        self.assertEqual(mdl_dic['id'], my_mdl.id)
+        self.assertEqual(mdl_dic['created_at'], my_mdl.created_at.isoformat())
+        self.assertEqual(mdl_dic["updated_at"], my_mdl.updated_at.isoformat())
 
     def test_str(self):
         """

@@ -104,7 +104,7 @@ class TestPlace_instantiation(unittest.TestCase):
         _place = Place()
         self.assertEqual(float, type(Place.longitude))
         self.assertIn("longitude", dir(_place))
-        self.assertNotIn("longitude",_place.__dict__)
+        self.assertNotIn("longitude", _place.__dict__)
 
     def test_amenity_ids_is_public_class_attribute(self):
         _place = Place()
@@ -147,8 +147,8 @@ class TestPlace_instantiation(unittest.TestCase):
 
     def test_instantiation_with_kwargs(self):
         my_date = datetime.today()
-        my_date_iso = my_date.isoformat()
-        _place = Place(id="777", created_at=my_date_iso, updated_at=my_date_iso)
+        date_is = my_date.isoformat()
+        _place = Place(id="777", created_at=date_is, updated_at=date_is)
         self.assertEqual(_place.id, "777")
         self.assertEqual(_place.created_at, my_date)
         self.assertEqual(_place.updated_at, my_date)
