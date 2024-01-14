@@ -49,7 +49,7 @@ class TestBasemodel(unittest.TestCase):
 
     def test_save(self):
         """
-        Tests for save the method.
+        Tests to save the method.
         """
         my_model = BaseModel()
 
@@ -61,7 +61,7 @@ class TestBasemodel(unittest.TestCase):
 
     def test_to_dict(self):
         """
-        Tests for to_dict method.
+        Tests for the to_dict method.
         """
         my_model = BaseModel()
 
