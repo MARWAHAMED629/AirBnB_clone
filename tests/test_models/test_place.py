@@ -83,7 +83,7 @@ class TestPlace_instantiation(unittest.TestCase):
         self.assertNotIn("number_bathrooms", _place.__dict__)
 
     def test_max_guest_is_public_class_attribute(self):
-        my_place = Place()
+        _place = Place()
         self.assertEqual(int, type(Place.max_guest))
         self.assertIn("max_guest", dir(_place))
         self.assertNotIn("max_guest", _place.__dict__)
@@ -98,7 +98,7 @@ class TestPlace_instantiation(unittest.TestCase):
         _place = Place()
         self.assertEqual(float, type(Place.latitude))
         self.assertIn("latitude", dir(_place))
-        self.assertNotIn("latitude", my_place.__dict__)
+        self.assertNotIn("latitude", _place.__dict__)
 
     def test_longitude_is_public_class_attribute(self):
         _place = Place()
@@ -118,7 +118,7 @@ class TestPlace_instantiation(unittest.TestCase):
         self.assertNotEqual(m_place1.id, m_place2.id)
 
     def test_two_places_different_created_at(self):
-        my_place1 = Place()
+        m_place1 = Place()
         sleep(0.05)
         m_place2 = Place()
         self.assertLess(m_place1.created_at, m_place2.created_at)
@@ -131,15 +131,15 @@ class TestPlace_instantiation(unittest.TestCase):
 
     def test_str_representation(self):
         my_date = datetime.today()
-        my_date_repr = repr(my_date)
+        date_rep = repr(my_date)
         _place = Place()
         _place.id = "777777"
-        _place.created_at = my_place.updated_at = my_date
-        _place_str = my_place.__str__()
+        _place.created_at = _place.updated_at = my_date
+        _place_str = _place.__str__()
         self.assertIn("[Place] (777777)", _place_str)
         self.assertIn("'id': '777777'", _place_str)
-        self.assertIn("'created_at': " + _date_repr, _place_str)
-        self.assertIn("'updated_at': " + _date_repr, _place_str)
+        self.assertIn("'created_at': " + date_rep, _place_str)
+        self.assertIn("'updated_at': " + date_rep, _place_str)
 
     def test_args_unused(self):
         _place = Place(None)
@@ -249,11 +249,11 @@ class TestPlace_to_dict(unittest.TestCase):
         self.assertIn("my_number", _place.to_dict())
 
     def test_to_dict_datetime_attributes_are_strs(self):
-        my_place = Place()
-        my_place_dict = my_place.to_dict()
-        self.assertEqual(str, type(_place_dict["id"]))
-        self.assertEqual(str, type(_place_dict["created_at"]))
-        self.assertEqual(str, type(_place_dict["updated_at"]))
+        _place = Place()
+        place_dict = _place.to_dict()
+        self.assertEqual(str, type(place_dict["id"]))
+        self.assertEqual(str, type(place_dict["created_at"]))
+        self.assertEqual(str, type(place_dict["updated_at"]))
 
     def test_to_dict_output(self):
         my_date = datetime.today()
@@ -275,7 +275,7 @@ class TestPlace_to_dict(unittest.TestCase):
     def test_to_dict_with_arg(self):
         _place = Place()
         with self.assertRaises(TypeError):
-            my_place.to_dict(None)
+            _place.to_dict(None)
 
 
 if __name__ == "__main__":

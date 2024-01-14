@@ -161,7 +161,7 @@ class TestUser_to_dict(unittest.TestCase):
 
     def test_to_dict_datetime_attributes_are_strs(self):
         ur = User()
-        ur_dict = us.to_dict()
+        ur_dict = ur.to_dict()
         self.assertEqual(str, type(ur_dict["id"]))
         self.assertEqual(str, type(ur_dict["created_at"]))
         self.assertEqual(str, type(ur_dict["updated_at"]))
@@ -177,7 +177,7 @@ class TestUser_to_dict(unittest.TestCase):
             'created_at': my_date.isoformat(),
             'updated_at': my_date.isoformat(),
         }
-        self.assertDictEqual(us.to_dict(), tdict)
+        self.assertDictEqual(ur.to_dict(), tdict)
 
     def test_contrast_to_dict_dunder_dict(self):
         ur = User()

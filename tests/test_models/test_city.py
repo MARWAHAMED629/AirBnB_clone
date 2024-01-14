@@ -45,7 +45,7 @@ class TestCity_instantiation(unittest.TestCase):
     def test_two_cities_unique_ids(self):
         my_cy1 = City()
         my_cy2 = City()
-        self.assertNotEqual(my_y1.id, my_cy2.id)
+        self.assertNotEqual(my_cy1.id, my_cy2.id)
 
     def test_two_cities_different_created_at(self):
         my_cy1 = City()
@@ -64,7 +64,7 @@ class TestCity_instantiation(unittest.TestCase):
         my_date_repr = repr(my_date)
         my_cy = City()
         my_cy.id = "777777"
-        my_cy.created_at = my_city.updated_at = my_date
+        my_cy.created_at = my_cy.updated_at = my_date
         my_cy_str = my_cy.__str__()
         self.assertIn("[City] (777777)", my_cy_str)
         self.assertIn("'id': '777777'", my_cy_str)

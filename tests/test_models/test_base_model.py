@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 """
-Module for BaseModel unittest
+Module for the BaseModel unittest
 """
 import models
 import os
@@ -41,21 +41,21 @@ class TestBasemodel(unittest.TestCase):
         """
         Test for an init.
         """
-        my_model = BaseModel()
+        my_mdl = BaseModel()
 
-        self.assertIsNotNone(my_model.id)
-        self.assertIsNotNone(my_model.created_at)
-        self.assertIsNotNone(my_model.updated_at)
+        self.assertIsNotNone(my_mdl.id)
+        self.assertIsNotNone(my_mdl.created_at)
+        self.assertIsNotNone(my_mdl.updated_at)
 
     def test_save(self):
         """
         Tests to save the method.
         """
-        my_model = BaseModel()
+        my_mdl = BaseModel()
 
-        initial_updated_at = my_model.updated_at
+        initial_updated_at = my_mdl.updated_at
 
-        current_updated_at = my_model.save()
+        current_updated_at = my_mdl.save()
 
         self.assertNotEqual(initial_updated_at, current_updated_at)
 
@@ -63,29 +63,29 @@ class TestBasemodel(unittest.TestCase):
         """
         Tests for the to_dict method.
         """
-        my_model = BaseModel()
+        my_mdl = BaseModel()
 
-        my_model_dict = my_model.to_dict()
+        my_mdl_dict = my_mdl.to_dict()
 
-        self.assertIsInstance(my_model_dict, dict)
+        self.assertIsInstance(my_mdl_dict, dict)
 
-        self.assertEqual(my_model_dict["__class__"], 'BaseModel')
-        self.assertEqual(my_model_dict['id'], my_model.id)
-        self.assertEqual(my_model_dict['created_at'], my_model.created_at.isoformat())
-        self.assertEqual(my_model_dict["updated_at"], my_model.created_at.isoformat())
+        self.assertEqual(my_mdl_dict["__class__"], 'BaseModel')
+        self.assertEqual(my_mdl_dict['id'], my_mdl.id)
+        self.assertEqual(my_mdl_dict['created_at'], my_mdl.created_at.isoformat())
+        self.assertEqual(my_mdl_dict["updated_at"], my_mdl.updated_at.isoformat())
 
 
     def test_str(self):
         """
         Test for the string representation.
         """
-        my_model = BaseModel()
+        my_mdl = BaseModel()
 
-        self.assertTrue(str(my_model).startswith('[BaseModel]'))
+        self.assertTrue(str(my_mdl).startswith('[BaseModel]'))
 
-        self.assertIn(my_model.id, str(my_model))
+        self.assertIn(my_mdl.id, str(my_mdl))
 
-        self.assertIn(str(my_model.__dict__), str(my_model))
+        self.assertIn(str(my_mdl.__dict__), str(my_mdl))
 
 
 if __name__ == "__main__":

@@ -175,8 +175,8 @@ class TestAmenity_to_dict(unittest.TestCase):
         self.assertTrue(dict, type(Amenity().to_dict()))
 
     def test_to_dict_contains_correct_keys(self):
-        amenity1 = Amenity()
-        self.assertIn("id", amenity1.to_dict())
+        ame1 = Amenity()
+        self.assertIn("id", ame1.to_dict())
         self.assertIn("created_at", ame1.to_dict())
         self.assertIn("updated_at", ame1.to_dict())
         self.assertIn("__class__", ame1.to_dict())
@@ -190,7 +190,7 @@ class TestAmenity_to_dict(unittest.TestCase):
 
     def test_to_dict_datetime_attributes_are_strs(self):
         ame1 = Amenity()
-        amenity_dict = amenity1.to_dict()
+        amenity_dict = ame1.to_dict()
         self.assertEqual(str, type(amenity_dict["id"]))
         self.assertEqual(str, type(amenity_dict["created_at"]))
         self.assertEqual(str, type(amenity_dict["updated_at"]))

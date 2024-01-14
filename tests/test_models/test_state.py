@@ -45,7 +45,7 @@ class TestState_instantiation(unittest.TestCase):
         my_state1 = State()
         sleep(0.05)
         my_state2 = State()
-        self.assertLess(state1.created_at, state2.created_at)
+        self.assertLess(my_state1.created_at, my_state2.created_at)
 
     def test_two_states_different_updated_at(self):
         my_state1 = State()
@@ -67,13 +67,13 @@ class TestState_instantiation(unittest.TestCase):
 
     def test_args_unused(self):
         my_st = State(None)
-        self.assertNotIn(None, state.__dict__.values())
+        self.assertNotIn(None, my_st.__dict__.values())
 
     def test_instantiation_with_kwargs(self):
         my_date = datetime.today()
         my_date_iso = my_date.isoformat()
         my_st = State(id="345", created_at=my_date_iso, updated_at=my_date_iso)
-        self.assertEqual(my-st.id, "345")
+        self.assertEqual(my_st.id, "345")
         self.assertEqual(my_st.created_at, my_date)
         self.assertEqual(my_st.updated_at, my_date)
 
@@ -108,7 +108,7 @@ class TestState_save(unittest.TestCase):
         my_st = State()
         sleep(0.05)
         first_updated_at = my_st.updated_at
-        st.save()
+        my_st.save()
         self.assertLess(first_updated_at, my_st.updated_at)
 
     def test_two_saves(self):
